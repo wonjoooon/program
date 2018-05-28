@@ -23,10 +23,35 @@ int winLoseDraw(int player, int opponent);
 int main()
 {
 	
+	int n,computer,s;
 
+	srand((unsigned int)time(0));
 
+	do
+	{
+	do
+	{
+	printf("가위(1), 바위(2), 보(3) 입력, 끝내려면 0 :");
+	scanf("%d",&n);
+	if(n==0)
+		break;
+	}while(n>3 || n<0);
+	
+	computer=rockScissorsPaper();
+
+	s=winLoseDraw(n,computer);
+
+	if(s==1)
+		printf("당신 = %d, 컴퓨터 = %d : 이겼습니다\n",n,computer);
+	if(s==-1)
+		printf("당신 = %d, 컴퓨터 = %d : 졌습니다\n",n,computer);
+	if(s==0)
+		printf("당신 = %d, 컴퓨터 = %d : 비겼습니다\n",n,computer);
+	}while(n!=0);
+	
 	return 0;
 }
+
 int rockScissorsPaper()
 {
 	return rand()%(3-1+1)+1;
